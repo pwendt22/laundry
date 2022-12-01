@@ -15,5 +15,6 @@ public ModelAndView index() {
 	mv.setViewName("/index");
 	return mv;
 	}
+
 }
 		
