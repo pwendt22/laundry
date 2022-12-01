@@ -61,6 +61,7 @@ public class User {
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name="user_role",
 			   joinColumns = @JoinColumn(name = "user_id"),
+			   //role_id is the foreign key
 			   inverseJoinColumns = @JoinColumn(name = "role_id"))
 	
 	private List<Role> roles;
@@ -68,6 +69,12 @@ public class User {
 	
 	//Getters and setters
 	
+	public List<Role> getRoles() {
+		return roles;
+	}
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
 	public String getLogin() {
 		return login;
 	}

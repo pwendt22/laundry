@@ -29,10 +29,27 @@
 				<div class="form-group">
 						<div align="left" class="label-group">
 							<label>Name</label>
+					<div class="col-sm-5"> 
+			    	<span class="mensagem" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+			    </div>			
+						
 						</div>
+						
 						<div>
 							<input type=text class="form-control" th:field="*{name}"  placeholder="Full name">
 						</div>
+					</div>
+					
+					<div class="form-group">
+						<div align="left" class="label-group">
+							<label>Birth Date</label>
+						</div>
+						<div>
+							<input type=text class="form-control" th:field="*{birthDate}"  placeholder="01/01/2021">
+						</div>
+						<div class="col-sm-5"> 
+			    	<span class="mensagem" th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}"></span>
+			    </div>
 					</div>
 										
 					<div class="form-group">
@@ -42,7 +59,26 @@
 						<div>
 							<input type=text name="email" th:field="*{email}"  class="form-control" aria-describedby="emailHelp">
 						</div>
+						<div class="col-sm-5"> 
+			    	<span class="mensagem" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+			    </div>
 					</div>
+					
+					<div class="form-group">
+						<div align="left" class="label-group">
+							<label>Login</label>
+						</div>
+						<div>
+							<input type=text name="login" th:field="*{login}"  class="form-control">
+						</div>
+						<div class="col-sm-5"> 
+			    	<span class="mensagem" th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></span>
+			    	
+			    	<span class="mensagem" th:if="${loginExiste}" th:text="${loginExiste}"></span>
+			    	
+				</div>
+					</div>
+
 
 					<div class="form-group">
 						<div align="left" class="label-group">
@@ -51,6 +87,9 @@
 						<div>
 							<input type=password th:field="*{password}"  class="form-control">
 						</div>
+						<div class="col-sm-5"> 
+			    	<span class="mensagem" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+			    </div>
 					</div>
 					
 					<div>

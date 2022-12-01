@@ -20,16 +20,28 @@ public class Role {
 	
 	@ManyToMany(mappedBy="roles",fetch=FetchType.EAGER)
 	private List<User> users;
+		
 	
+	public Role() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	
+	public Role(String role) {
+		super();
+		this.role = role;
+	}
 	
+
+	//getters ad setters
 	public List<User> getUsers() {
 		return users;
 	}
 	public void setUsers(List<User> users) {
 		this.users = users;
 	}
-	//getters ad setters
+	
 	public Long getId() {
 		return id;
 	}

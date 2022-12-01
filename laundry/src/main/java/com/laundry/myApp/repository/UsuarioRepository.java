@@ -1,5 +1,13 @@
 package com.laundry.myApp.repository;
 
-public class UsuarioRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.laundry.myApp.models.User;
+
+public interface UsuarioRepository extends JpaRepository<User, Long> {
+	static User findByLogin(String login) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
+
