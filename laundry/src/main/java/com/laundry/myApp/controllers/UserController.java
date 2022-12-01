@@ -36,7 +36,7 @@ public class UserController {
 	public ModelAndView register(User user) {
 		ModelAndView mv=new ModelAndView();
 		customerrepository.save(user);
-		mv.setViewName("redirect:/viewProfile");
+		mv.setViewName("redirect:/profile");
 		return mv;
 		
 	}
