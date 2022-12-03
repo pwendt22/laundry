@@ -2,6 +2,10 @@ package com.laundry.myApp.controllers;
 
 import javax.validation.Valid;
 
+import com.laundry.myApp.controllers.dto.UserProfileDto;
+import com.laundry.myApp.controllers.form.RegistrationFormDto;
+import com.laundry.myApp.services.UserService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,16 +19,25 @@ import com.laundry.myApp.dao.UserDao;
 import com.laundry.myApp.models.User;
 import com.laundry.myApp.repository.UsuarioRepository;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 
 @Controller
+@AllArgsConstructor
 public class UserController {
 	
-	@Autowired
-	private UsuarioRepository usuarioRepository;
-
+	private UserService userService;
 	
 	@GetMapping("/")
 	public ModelAndView login() {
+
+		List<UserProfileDto> users = userService
+				.getAll()
+				.stream()
+				.map(UserProfileDto::new)
+				.toList();
+
 		ModelAndView mv=new ModelAndView();
 		mv.setViewName("login");
 		return mv;
@@ -40,15 +53,13 @@ public class UserController {
 		
 	}
 	@PostMapping("/saveUser")
-	public String register(@Valid User user, BindingResult result, 
-				Model model, RedirectAttributes attributes) {
+	public String register(@Valid RegistrationFormDto registrationForm, BindingResult result,
+						   Model model, RedirectAttributes attributes) {
 		if (result.hasErrors()) {
 			return "/index";
 		}
 		
-		User usr = UsuarioRepository.findByLogin(user.getLogin());
-		if (usr != null) {
-			mod
+		User user = userService.getByUsername(registrationForm.getUsername());
 
 			
 		
